@@ -110,5 +110,38 @@ The project utilizes two types of variables:
   
 - **dbt Variables**: These are passed through the command line (e.g., `dbt run --var='example_var:value'`) or defined in the `dbt_project.yml` file. When both types are defined, the command-line variable takes precedence over the configuration file.
 
+#### BI Integration
+
+The transformed data in **Snowflake** can be easily integrated with **Business Intelligence (BI)** tools like **Tableau** and **Preset** for powerful visualization and reporting. By assigning a dedicated **reporting role** in Snowflake, analysts can create dashboards and share insights effectively with the team and stakeholders.
+
+Additionally, dbt allows external reports and dashboards to be documented using **exposures**, which can be referenced in YAML files and compiled into the dbt-generated documentation. This integration ensures **better traceability** of business intelligence workflows, making it easier for teams to track data sources and reports across the pipeline.
+
+![Simple Tableau dashboard](https://github.com/ArabOmar/dbt-snowflake-analytic-engineer-project/blob/main/Images/Dashboard%20Tableau.png)
+
+### Orchestrating dbt with Dagster
+
+**Dagster** is an open-source data orchestrator used to manage dbt workflows efficiently. Unlike Apache Airflow, Dagster is easier to install, modern, and integrates seamlessly with dbt. It provides an alternative to dbt Cloud while remaining cost-effective. 
+
+The setup involves installing `dagster-dbt` and `dagster-webserver`, followed by creating a new project using the `dagster-dbt project scaffold` command. Once configured, users can navigate to the project directory and start Dagster using the `dagster dev` command.
+
+
+![Dagster UI Overview](https://github.com/ArabOmar/dbt-snowflake-analytic-engineer-project/blob/main/Images/Dagster%20Flow.png)
+
+#### Key Features of Dagster in dbt Workflows
+
+- **Materialization Control**: Dagster allows users to select and materialize specific assets in the pipeline. This feature provides granular control over which models and tables should be materialized, improving both flexibility and efficiency.
+
+- **Real-time Logs and Events**: Dagster provides real-time logs and event tracking for each job and task in the pipeline. This allows for better visibility into the execution of dbt models and provides timely feedback for troubleshooting any issues.
+
+- **Automated Scheduling**: Dagster enables automated scheduling of dbt tasks, such as running incremental loads daily. This ensures that the pipeline runs at the desired frequency without manual intervention, keeping data up to date.
+
+- **Incremental Processing**: Dagster’s support for incremental processing helps avoid unnecessary reprocessing of data by tracking changes in data and only processing new or modified records. This ensures that the system remains performant and cost-effective, particularly when dealing with large datasets.
+
+- **Seamless Orchestration**: Dagster orchestrates dbt workflows without modifying production runs directly. It handles task dependencies and execution order, ensuring a robust and well-structured data pipeline.
+
+
+### Conclusion
+
+This project demonstrates how **dbt** enhances data transformation within **Snowflake** by integrating software engineering principles into analytics workflows. By leveraging structured data layers, robust testing, macros, and documentation, dbt ensures a scalable and maintainable data pipeline. Additionally, integrating dbt with **Dagster** and BI tools like **Tableau** further optimizes workflow orchestration and data visualization, making the analytics process more efficient and insight-driven.
 
 
