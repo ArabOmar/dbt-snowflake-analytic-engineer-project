@@ -1,0 +1,33 @@
+version: 2
+
+exposures:
+
+  - name: executive_dashboard_1
+    label: Dashboard 1
+    type: dashboard
+    maturity: low
+    url: https://dub01.online.tableau.com/t/omararabou-e115008b4d/views/dbt/FullmoonsVSReviews?:origin=card_share_link&:embed=n
+    description: Simple Dashboard about Full moons and Reviews
+    
+    depends_on:
+    - ref('dim_listings_w_hosts')
+    - ref('mart_full_moon_reviews')
+    
+    owner:
+      name: Omar Arabou
+      email: omar.arabou@outlook.fr
+
+  - name: executive_dashboard_2
+    label: Dashboard 2
+    type: dashboard
+    maturity: low
+    url: https://dub01.online.tableau.com/t/omararabou-e115008b4d/views/dbt/Tableaudebord2?:origin=card_share_link&:embed=n
+    description: Simple Dashboard about Distributions
+
+    depends_on:
+    - ref('dim_listings_w_hosts')
+    - ref('mart_full_moon_reviews')
+    
+    owner:
+      name: Omar Arabou
+      email: omar.arabou@outlook.fr
